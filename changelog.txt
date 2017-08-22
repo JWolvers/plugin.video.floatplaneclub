@@ -1,2 +1,10 @@
-1.0.0
- First Version
+1.0.2:
+- First Public Version
+
+1.03:
+- Fix wrong dependency
+
+1.04:
+- Now using RSS for first page which means:
+	* Thumbnails on the first page
+	* Faster loading times for first page

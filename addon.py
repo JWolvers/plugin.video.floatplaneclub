@@ -28,12 +28,13 @@ def show_page1():
     videos, has_next_page = scraper.get_videos()
     items = [{
         'label': video['title'],
+        'thumbnail': video['thumbnail'],
         'info': {
             'originaltitle': video['title']
         },
         'path': plugin.url_for(
             endpoint='watch_video',
-            video_id=video['url']
+            video_id=video['guid']
         ),
         'is_playable': True,
     } for video in videos]
@@ -53,9 +54,13 @@ def show_page1():
 
 @plugin.route('/<page>/')
 def show_page(page):
+    if page is 1:
+        return show_page1()
+
     videos, has_next_page = scraper.get_videos(page)
     items = [{
         'label': video['title'],
+        'thumbnail': video['thumbnail'],
         'info': {
             'originaltitle': video['title']
         },
@@ -74,17 +79,6 @@ def show_page(page):
             'path': plugin.url_for(
                 endpoint='show_page',
                 page=next_page
-            ),
-        })
-    if int(page) > 1:
-        prev_page = str(int(page) - 1)
-        items.insert(0, {
-            'label': '<< page %s <<' % (
-                prev_page
-            ),
-            'path': plugin.url_for(
-                endpoint='show_page',
-                page=prev_page
             ),
         })
     return plugin.finish(items)
