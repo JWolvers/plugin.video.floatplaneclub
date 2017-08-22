@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.floatplaneclub" name="Floatplane Club" version="1.0.2" provider-name="MrWolvetech">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+		  <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="script.module.beautifulsoup" version="3.0.8"/>
+        <import addon="script.module.xbmcswift2" version="2.4.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <language>en</language>
+        <platform>all</platform>
+        <website>https://linustechtips.com</website>
+        <source>https://github.com/MrWolvetech/plugin.video.floatplaneclub</source>
+        <forum>linustechtips.com</forum>
+        <email>Development@wolvete.ch</email>
+        <license>GNU General Public License v3.0</license>
+        <summary lang="en">A video plugin for Floatplane Club</summary>
+        <description lang="en">A video plugin for Floatplane Club, a video platform created by linustechtips.com</description>
+    </extension>
+</addon>
