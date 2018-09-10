@@ -61,7 +61,10 @@ def get_videos(page=1):
         items = soup.findAll("item")
         videos = []
         for item in items:
-            guid = re.search('https:\/\/cms.linustechtips.com\/get\/player\/([a-zA-Z0-9]*)[\'|"]', item.text).group(1)
+            tmp = re.search('https:\/\/cms.linustechtips.com\/get\/player\/([a-zA-Z0-9]*)[\'|"]', item.text)
+            if tmp is None:
+                continue
+            guid = tmp.group(1)
             video = {"title":item.find("title").text, "url":None, "guid":guid, "thumbnail":videoThumbURL.format(guid)}
             videos.append(video)
         has_next_page = True
